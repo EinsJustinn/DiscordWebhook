@@ -17,8 +17,8 @@ Replace `YOUR_WEBHOOK_URL` with the actual webhook URL you obtained from Discord
 #### Set Username and Avatar
 
 ```java
-discordWebhook.setUsername("YOUR_USERNAME_HERE");
-discordWebhook.setAvatarURL("YOUR_AVATAR_URL_HERE");
+        discordWebhook.setUsername(username: String);
+        discordWebhook.setAvatarURL(avatarURL: String);
 ```
 
 Set the username and avatar for the webhook message. Replace `YOUR_AVATAR_URL_HERE` with the URL of the desired avatar image.
@@ -26,18 +26,18 @@ Set the username and avatar for the webhook message. Replace `YOUR_AVATAR_URL_HE
 #### Set Content and Embed
 
 ```java
-discordWebhook.setContent("Text -> 2000 characters.");
-discordWebhook.setEmbed(
-        new Embed()
-                .setTitle("Hello")
-                .setDescription("Text message")
-                .setAuthor("EinsJustinnn", "https://einsjustinnn.de", "https://i.imgur.com/cOpF2YF.png")
-                .setColor(new Color(255, 255, 255))
-                .setThumbnailURL("https://i.imgur.com/MxZKsw8.png")
-                .setFooter("Use me :)", "https://i.imgur.com/xD2nmzz.jpeg")
-                .setURL("https://google.de")
-                .setImageURL("https://i.imgur.com/pMt3vY0.jpeg")
-);
+discordWebhook.setContent(content: String);
+        discordWebhook.setEmbed(
+                new Embed()
+                        .setTitle(title: String)
+                        .setDescription(text: String)
+                        .setAuthor(name: String, url: String, iconURL: String)
+                        .setColor(new Color(255, 255, 255))
+                        .setThumbnailURL(url: String)
+                        .setFooter(text: String, iconUrl: String)
+                        .setURL(url: String)
+                        .setImageURL(imageURL: String)
+        );
 ```
 
 Set the main content of the message and configure the embed with various properties such as title, description, author, color, thumbnail, footer, URL, and image. Customize these properties based on your requirements.
@@ -47,18 +47,18 @@ Set the main content of the message and configure the embed with various propert
 
 ```java
 discordWebhook.setEmbed(
-        new Embed()
-        .setTitle("Hello")
-        .setDescription("Text message")
-        .setAuthor("EinsJustinnn", "https://einsjustinnn.de", "https://i.imgur.com/cOpF2YF.png")
-        .setColor(new Color(255, 255, 255))
-        .setThumbnailURL("https://i.imgur.com/MxZKsw8.png")
-        .setFooter("Use me :)", "https://i.imgur.com/xD2nmzz.jpeg")
-        .setURL("https://google.de")
-        .setImageURL("https://i.imgur.com/pMt3vY0.jpeg")
-        .addField("test", "hi", true)
-        .addField("test1", "hi1", true)
-        .addField("test2", "hi2", true)
+                new Embed()
+                        .setTitle(title: String)
+                        .setDescription(text: String)
+                        .setAuthor(name: String, url: String, iconURL: String)
+                        .setColor(new Color(255, 255, 255))
+                        .setThumbnailURL(url: String)
+                        .setFooter(text: String, iconUrl: String)
+                        .setURL(url: String)
+                        .setImageURL(imageURL: String)
+                        .addField(name: String, value: String, inline: Boolean)
+                        .addField(name: String, value: String, inline: Boolean)
+                        .addField(name: String, value: String, inline: Boolean)
         );
 ```
 
@@ -78,23 +78,23 @@ Send the configured webhook message to the specified Discord channel.
 public class DiscordWebhookExample {
     public static void main(String[] args) {
 
-        DiscordWebhook discordWebhook = new DiscordWebhook("YOUR_WEBHOOK_URL");
-        discordWebhook.setUsername("YOUR_USERNAME_HERE");
-        discordWebhook.setAvatarURL("YOUR_AVATAR_URL_HERE");
-        discordWebhook.setContent("Text -> 2000 characters.");
+        DiscordWebhook discordWebhook = new DiscordWebhook(url: String);
+        discordWebhook.setUsername(username: String);
+        discordWebhook.setAvatarURL(avatarURL: String);
+        discordWebhook.setContent(content: String);
         discordWebhook.setEmbed(
                 new Embed()
-                        .setTitle("Hello")
-                        .setDescription("Text message")
-                        .setAuthor("EinsJustinnn", "https://einsjustinnn.de", "https://i.imgur.com/cOpF2YF.png")
+                        .setTitle(title: String)
+                        .setDescription(text: String)
+                        .setAuthor(name: String, url: String, iconURL: String)
                         .setColor(new Color(255, 255, 255))
-                        .setThumbnailURL("https://i.imgur.com/MxZKsw8.png")
-                        .setFooter("Use me :)", "https://i.imgur.com/xD2nmzz.jpeg")
-                        .setURL("https://google.de")
-                        .setImageURL("https://i.imgur.com/pMt3vY0.jpeg")
-                        .addField("Field Text 1", "hi", true)
-                        .addField("Field Text 2", "hi1", false)
-                        .addField("Field Text 3", "hi2", true)
+                        .setThumbnailURL(url: String)
+                        .setFooter(text: String, iconUrl: String)
+                        .setURL(url: String)
+                        .setImageURL(imageURL: String)
+                        .addField(name: String, value: String, inline: Boolean)
+                        .addField(name: String, value: String, inline: Boolean)
+                        .addField(name: String, value: String, inline: Boolean)
         );
 
         discordWebhook.sendWebhook();
